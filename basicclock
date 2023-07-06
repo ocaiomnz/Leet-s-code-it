@@ -1,0 +1,33 @@
+# a clock 
+class Relogio:
+    def __init__(self, hora, minuto, segundo):
+        self.hora = hora
+        self.minuto = minuto
+        self.segundo = segundo
+        
+    def ajustahora(self, horacerta):
+        if horacerta >= 24:
+            while horacerta > 24:
+                horacerta = horacerta - 24
+        if horacerta == 24:
+            horacerta = 0
+        self.hora = horacerta
+    
+    def ajustaminuto(self, minutocerto):
+        if minutocerto >= 60:
+            self.hora += minutocerto // 60
+            minutocerto %= 60
+        self.minuto = minutocerto
+    
+    def ajustasegundo(self, segundocerto):
+        if segundocerto >= 60:
+            self.minuto += segundocerto // 60
+            segundocerto %= 60
+        self.segundo = segundocerto
+
+relogio1 = Relogio(0, 0, 0)
+relogio1.ajustahora(28)
+relogio1.ajustaminuto(68)
+relogio1.ajustasegundo(120)
+
+print(f"São exatamente {relogio1.hora}:{relogio1.minuto}:{relogio1.segundo}")
